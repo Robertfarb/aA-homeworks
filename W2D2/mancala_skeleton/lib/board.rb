@@ -4,6 +4,8 @@ class Board
   def initialize(name1 = "bob", name2 = "simon")
     @cups = Array.new(14) {[]}
     place_stones
+    @name1 = name1
+    @name2 = name2
   end
 
   def place_stones
@@ -19,8 +21,25 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
+    stone_count = cups[start_pos].count
+
+    stone_count.times do |idx|
+      @cups[start_pos + idx + 1] << :stone
+      next if start_pos + idx == 6 || start_pos + idx == 13
+    end
+
     cups[start_pos] = []
-    cups[start_pos]
+
+    render
+    next_turn(start_pos + stone_count)
+    end_cup = @cups[start_pos + stone_count]
+
+    if end_cup.empty?
+      return :switch
+    else end_cup.length > 1
+      return end_cup
+    # elsif end_cup.count > 1
+    end
   end
 
   def next_turn(ending_cup_idx)
@@ -36,6 +55,7 @@ class Board
   end
 
   def one_side_empty?
+    @cups[0...6].all? {|cup| cup.empty?} || @cups[7..12].all?{|cup| cup.empty?}
   end
 
   def winner
