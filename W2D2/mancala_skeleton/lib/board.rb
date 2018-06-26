@@ -36,9 +36,10 @@ class Board
 
     if end_cup.empty?
       return :switch
-    else end_cup.length > 1
-      return end_cup
-    # elsif end_cup.count > 1
+    elsif end_cup.length > 1
+      return start_pos + stone_count
+    elsif end_cup.count == 6 || end_cup.count == 13
+      return :prompt
     end
   end
 
