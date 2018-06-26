@@ -1,3 +1,5 @@
+require_relative 'mancala'
+
 class Board
   attr_accessor :cups
 
@@ -24,27 +26,28 @@ class Board
     stone_count = cups[start_pos].count
 
     stone_count.times do |idx|
+      break if idx == cups.length - 1
       @cups[start_pos + idx + 1] << :stone
-      next if start_pos + idx == 6 || start_pos + idx == 13
+      next if start_pos == 6 && current_player_name == @name1
+      next if start_pos == 13 && current_player_name == @name2
     end
 
     cups[start_pos] = []
 
     render
     next_turn(start_pos + stone_count)
-    end_cup = @cups[start_pos + stone_count]
-
-    if end_cup.empty?
-      return :switch
-    elsif end_cup.length > 1
-      return start_pos + stone_count
-    elsif end_cup.count == 6 || end_cup.count == 13
-      return :prompt
-    end
   end
 
   def next_turn(ending_cup_idx)
-    # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
+    # helper method to determine whether #make_move returns :switch, :promdpt, or ending_cup_idx
+    end_cup = @cups[ending_cup_idx]
+    if end_cup.empty?
+      return :switch
+    elsif end_cup.length > 1
+      return ending_cup_idx
+    elsif ending_cup_idx == 6 || ending_cup_idx == 13
+      return :prompt
+    end
   end
 
   def render
@@ -60,6 +63,13 @@ class Board
   end
 
   def winner
+    if @cups[6].count == @cups[13].count
+      return :draw
+    elsif @cups[6].length > @cups[13].length
+      return @name1
+    else
+      return @name2
+    end
   end
 end
 
