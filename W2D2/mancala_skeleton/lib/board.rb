@@ -1,4 +1,5 @@
 require_relative 'mancala'
+require 'byebug'
 
 class Board
   attr_accessor :cups
@@ -24,15 +25,13 @@ class Board
 
   def make_move(start_pos, current_player_name)
     stone_count = cups[start_pos].count
+    cups[start_pos] = []
 
     stone_count.times do |idx|
-      break if idx == cups.length - 1
-      @cups[start_pos + idx + 1] << :stone
-      next if start_pos == 6 && current_player_name == @name1
-      next if start_pos == 13 && current_player_name == @name2
+      pos = (start_pos + idx + 1) % @cups.length
+      @cups[pos] << :stone
+      next if current_player_name == @name1 && pos == 6
     end
-
-    cups[start_pos] = []
 
     render
     next_turn(start_pos + stone_count)
