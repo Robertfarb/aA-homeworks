@@ -50,5 +50,27 @@ end
 # fish_arr.merge_sort.last
 
 def clever_octopus(arr)
+  longest_octopus = ""
+  arr.each do |octopus|
+    longest_octopus = octopus if octopus.length > longest_octopus.length
+    i += 1
+  end
+  longest_octopus
+end
 
+# p clever_octopus(fish_arr)
+tiles_array = ["up", "right-up", "right", "right-down", "down", "left-down", "left",  "left-up" ]
+
+def slow_dance(target_move, arr)
+  arr.each_with_index do |move, idx|
+    return idx if move == target_move
+  end
+end
+
+p slow_dance("right-down", tiles_array)
+
+def constant_dance(move, tiles_hash)
+  tiles_hash = {"up" => 0, "right-up" => 1, "right" => 2, "right-down" => 3, "down" => 4, "left-down" => 5
+                "left" => 6, "left-up" => 7}
+  tiles_hash[move]
 end
