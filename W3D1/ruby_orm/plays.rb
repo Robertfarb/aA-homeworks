@@ -93,9 +93,9 @@ class Playwright
       WHERE
         name = ?
     SQL
-    return nil unless playright.length >= 1
+    return nil unless playwright.length >= 1
 
-    Playwright.new()
+    Playwright.new(playwright.first)
   end
 
   def initialize(options)
@@ -105,6 +105,13 @@ class Playwright
   end
 
   def create
+    playwright = PlayDBConnection.instance.execute(<<-SQL @name, @birth_year)
+      INSERT INTO
+        playwrights(name, birth_year)
+      VALUES
+        ?, ?
+    SQL
+    @id = PlayDBConnection.instance.last_insert_row_id
   end
 
   def update
