@@ -24,7 +24,7 @@ class Route < ApplicationRecord
     all_drivers = {}
     buses = self.buses.includes(:drivers)
     buses.each do |bus|
-      all_drivers[bus.id] = bus.driver.name
+      all_drivers[bus.id] = bus.drivers.name
     end
   end
 end
