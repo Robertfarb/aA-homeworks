@@ -113,6 +113,8 @@ class MetaCorgiSnacks
     info_send = @snack_box.send("get_#{name}_info", @box_id)
     t_send = @snack_box.send("get_#{name}_tastiness", @box_id)
     name = "#{name.to_s.split('_').map(:&capitalize).jpin(' ')}"
+    result = "#{name}: #{info}: #{tastiness} "
+    tastiness > 30 ? "* #{result}" : result
   end
 
 
