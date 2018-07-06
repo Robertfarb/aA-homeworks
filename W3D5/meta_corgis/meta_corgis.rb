@@ -110,7 +110,9 @@ class MetaCorgiSnacks
   end
 
   def method_missing(name, *args)
-    # Your code goes here...
+    info_send = @snack_box.send("get_#{name}_info", @box_id)
+    t_send = @snack_box.send("get_#{name}_tastiness", @box_id)
+    name = "#{name.to_s.split('_').map(:&capitalize).jpin(' ')}"
   end
 
 
