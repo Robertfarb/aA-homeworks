@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :username, :session_token, presence: true
 
   def self.find_by_credentials(username, password)
-    User.find_by(username: username)
+
   end
 
   def self.genereate_session_token
