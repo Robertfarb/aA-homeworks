@@ -9,7 +9,9 @@ span, article, footer, time, small {
   padding: 0;
   border: 0;
   outline: 0;
-  font: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
   color: inherit;
   text-align: inherit;
   text-decoration: inherit;
@@ -45,4 +47,10 @@ button {
 button,
 input[type="submit"] {
   cursor: pointer;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
 }
