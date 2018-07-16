@@ -11,6 +11,8 @@ body {
 }
 
 .header-nav {
+  display: flex;
+  flex-flow: row wrap;
   width: 900px;
   margin: 0 auto;
   border-left: 1px solid #ccc;
@@ -18,20 +20,30 @@ body {
 }
 
 .header-logo {
+  justify-content: flex-start;
   display: block;
-  float: left;
   font-weight: 700;
   padding: 10px 20px;
   border-right: 1px solid #ccc;
 }
 
 .header-list {
-  display: block;
-  float: right;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
 }
 
 .header-list li {
   float: left;
   padding: 10px 20px;
   border-left: 1px solid #ccc;
+}
+
+.header h1:hover {
+  background-color: black;
+}
+
+.header li:hover {
+  cursor: pointer;
+  background-color: black;
 }
