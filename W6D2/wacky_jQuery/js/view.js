@@ -23,7 +23,7 @@ View.prototype.exercise1 = function () {
   //Result: Every square should turn orange (we already have a CSS rule)
 
   //your code here!
-  $('li').addClass("orange")
+  $('li').addClass("orange");
 };
 
 View.prototype.exercise2 = function () {
@@ -31,7 +31,7 @@ View.prototype.exercise2 = function () {
   //Result: Every square vanishes
 
   //your code here!
-  
+  $('li').css('display', 'none');
 };
 
 View.prototype.exercise3 = function () {
