@@ -59,8 +59,9 @@ View.prototype.exercise5 = function () {
   //  'data-pos' of every square
 
   //your code here!
-  $('li').click(() => {
-    alert("data-pos");
+  $(".square").on("click", (e) => {
+    const $sq = $(e.currentTarget);
+    alert($sq.attr("data-pos"))
   });
 };
 
@@ -70,8 +71,12 @@ View.prototype.exercise6 = function () {
   //should become a beautiful rainbow of colors.
 
   //hint: use window._randomColorString() (defined at top) to get a random color!
-
+  
   //your code here!
+  $('.square').each((idx, el) => {
+    let $square = $(el);
+    $square.css("background-color", _randomColorString());
+  });
 };
 
 View.prototype.exercise7 = function(){
