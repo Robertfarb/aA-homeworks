@@ -39,7 +39,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // adding new photos
 
   // --- your code here!
+  
+  
 
+  const togglePhotoForm = (e) => {
+    const photoForm = document.getElementById("photo-form");
+    if (photoForm.className === "photo-form-container") {
+      photoForm.className = "photo-form-container hidden";
+    } else {
+      photoForm.className = "photo-form-container"
+    }
+  }
 
-
+  const photoButton = document.getElementById("photo-button");
+  photoButton.addEventListener("click", togglePhotoForm);
 });
