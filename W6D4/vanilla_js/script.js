@@ -19,6 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // adding SF places as list items
 
   // --- your code here!
+  const restaurantForm = document.getElementById("restaurant-form");
+  restaurantForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let input = document.getElementById("rest-name");
+    let restName = input.value;
+    input.value = "";
+
+    const ul = document.getElementById("restaurants");
+    const li = document.createElement("li");
+    console.log(li);
+    li.textContent = restName;
+    ul.appendChild(li);
+  });
 
 
 
