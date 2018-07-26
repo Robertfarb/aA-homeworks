@@ -87,6 +87,10 @@ View.prototype.exercise7 = function(){
   //rainbow.
 
   //your code here!
+  $('#easel').on("mouseover", ".square" e => {
+    const $square = $(e.currentTarget);
+    console.log($sq.css("background-color"));
+  });
 };
 
 
