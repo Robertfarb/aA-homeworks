@@ -9635,23 +9635,104 @@ var Calculator = function (_React$Component) {
       num1: "",
       num2: ""
     };
+    _this.setNum1 = _this.setNum1.bind(_this);
+    _this.setNum2 = _this.setNum2.bind(_this);
+    _this.add = _this.add.bind(_this);
+    _this.subtract = _this.subtract.bind(_this);
+    _this.divide = _this.divide.bind(_this);
+    _this.multiply = _this.multiply.bind(_this);
+    _this.clear = _this.clear.bind(_this);
     return _this;
   }
 
   //your code here
 
   _createClass(Calculator, [{
+    key: "setNum1",
+    value: function setNum1(e) {
+      var num1 = e.target.value ? parseInt(e.target.value) : "";
+      this.setState({ num1: num1 });
+    }
+  }, {
+    key: "setNum2",
+    value: function setNum2(e) {
+      var num2 = e.target.value ? parseInt(e.target.value) : "";
+      this.setState({ num2: num2 });
+    }
+  }, {
+    key: "add",
+    value: function add(e) {
+      e.preventDefault();
+      var result = this.state.num1 + this.state.num2;
+      this.setState({ result: result });
+    }
+  }, {
+    key: "subtract",
+    value: function subtract(e) {
+      e.preventDefault();
+      var result = this.state.num1 * this.state.num2;
+      this.setState({ result: result });
+    }
+  }, {
+    key: "multiply",
+    value: function multiply(e) {
+      e.preventDefault();
+      var result = this.state.num1 * this.state.num2;
+      this.setState({ result: result });
+    }
+  }, {
+    key: "divide",
+    value: function divide(e) {
+      e.preventDefault();
+      var result = this.state.num1 / this.state.num2;
+      this.setState({ result: result });
+    }
+  }, {
+    key: "clear",
+    value: function clear(e) {
+      e.preventDefault();
+      var result = 0;
+      this.setState({ result: result });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "calculator" },
         _react2.default.createElement(
           "h1",
           null,
-          "Hello World"
+          this.state.result
         ),
-        "//your code will replace this"
+        _react2.default.createElement("input", { onChange: this.setNum1, type: "text", value: this.state.num1 }),
+        _react2.default.createElement("input", { onChange: this.setNum2, type: "text", value: this.state.num2 }),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement(
+          "button",
+          { onClick: this.add },
+          "+"
+        ),
+        _react2.default.createElement(
+          "button",
+          { onClick: this.subtract },
+          "-"
+        ),
+        _react2.default.createElement(
+          "button",
+          { onClick: this.multiply },
+          "*"
+        ),
+        _react2.default.createElement(
+          "button",
+          { onClick: this.divide },
+          "/"
+        ),
+        _react2.default.createElement(
+          "button",
+          { onClick: this.clear },
+          "Clear"
+        )
       );
     }
   }]);
