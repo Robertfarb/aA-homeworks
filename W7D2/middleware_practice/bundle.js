@@ -1374,14 +1374,26 @@ var _root2 = _interopRequireDefault(_root);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var addLoggingToDispatch = function addLoggingToDispatch(store) {
-  var disp = store.dispatch;
+//Phase 01:
+// const addLoggingToDispatch = store => {
+//   const disp = store.dispatch;
 
-  return function (action) {
-    console.log(store.getState());
-    console.log(action);
-    disp(action);
-    console.log('State post-dispatched:', store.getState());
+//   return (action) => {
+//     console.log(store.getState());
+//     console.log(action);
+//     disp(action);
+//     console.log('State post-dispatched:', store.getState());
+//   }
+// };
+
+var addLoggingToDispatch = function addLoggingToDispatch(store) {
+  return function (next) {
+    return function (action) {
+      console.log(store.getState());
+      console.log(action);
+      next(action);
+      console.log(store.getState());
+    };
   };
 };
 
