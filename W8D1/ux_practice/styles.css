@@ -1,0 +1,56 @@
+body {
+  text-align: center;
+  margin: 0;
+}
+
+.splash-body {
+  background: url('splash.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+.nav-bar-container {
+  width: 100%;
+  background-color: #fffef3;
+  height: 75px;
+
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.navBar-left {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navBar-right {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navBar a {
+  padding: 5px;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+.main-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.main-content
+
